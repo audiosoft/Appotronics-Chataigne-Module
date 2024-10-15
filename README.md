@@ -1,14 +1,16 @@
 # Control module for Appotronics projectors for Chataigne
 
-** Created by Wazmethod, 14/10/2024 **
+*Created by [Wazmethod](https://github.com/wazmethod/), 14/10/2024*
+
+[Chataigne by Ben Kuper](https://github.com/benkuper/Chataigne)
 
 ## Installation
 
-Just extract the .zip file inside the `Documents/Chataigne/modules`folder
+Just extract the .zip file inside the `Documents/Chataigne/modules` folder.
 
 ## Usage
 
-Reload the community module. The new installed module should be in the "Protocol" category.
+If Chataigne is open, reload community modules. The new installed module should be in the "Protocol" category. You'll have a variety of commands and values to communicate with Appotronics projectors.
 
 ## What this module can do ?
 
