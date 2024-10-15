@@ -36,8 +36,8 @@ If Chataigne is open, reload community modules. The new installed module should 
 - [x] Source Status
 - [x] Laser Status
 - [x] Installation Mode Status
-- [x] Aspect ratio Status
-- [ ] 
+- [x] Aspect ratio Status 
+
 ## Infos received from the device
 
 - `AT+System`
