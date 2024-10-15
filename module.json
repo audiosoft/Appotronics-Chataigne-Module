@@ -6,7 +6,7 @@
 	"version":"1.0.0",
 	"description":"Allows you to control Appotronics projectors",
 	"url": "https://github.com/audiosoft/Appotronics-Chataigne-Module",
-	"downloadURL": "",
+	"downloadURL": "https://github.com/audiosoft/Appotronics-Chataigne-Module/archive/refs/heads/main.zip",
 	
 	"hasInput":true,
 	"hasOutput":true,
