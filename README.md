@@ -3,6 +3,7 @@
 *Created by [Wazmethod](https://github.com/wazmethod/), 14/10/2024*
 
 [Chataigne by Ben Kuper](https://github.com/benkuper/Chataigne)
+> Based on the TCP Client Module
 
 ## Installation
 
