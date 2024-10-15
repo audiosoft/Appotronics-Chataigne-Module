@@ -1,0 +1,325 @@
+{
+	"name":"Appotronics",
+	"type":"TCP Client",
+	"path":"Protocol",
+	
+	"version":"1.0.0",
+	"description":"Allows you to control Appotronics projectors",
+	"url": "https://github.com/audiosoft/Appotronics-Chataigne-Module",
+	"downloadURL": "",
+	
+	"hasInput":true,
+	"hasOutput":true,
+	"hideDefaultCommands":true,
+	"hideDefaultParameters": ["protocol", "messageStructure", "customSeparator", "remotePort", "firstValueIsTheName","autoAdd"],
+
+	"defaults":
+	{		
+		"protocol": "Direct",
+		"autoAdd": true,
+		"messageStructure": "Custom character",
+		"customSeparator": "#",
+		"output":
+		{
+			"local": false,
+			"remotePort": 4352
+		}
+	},
+
+	"parameters":
+	{
+	},
+	"values":
+	{
+		"AT+System":{
+			"type":"String",
+			"readOnly":true,
+			"description":"Status of the device",
+			"default":"UNKNOWN"
+		},
+		"AT+Volume":{
+			"type":"String",
+			"readOnly":true,
+			"description":"Value of the volume (received from the device)",
+			"default":"UNKNOWN"
+		},
+		"AT+VolumeControl":{
+			"type":"String",
+			"readOnly":true,
+			"description":"Status of the volume control (received from the device)",
+			"default":"UNKNOWN"
+		},
+		"AT+LightSource":{
+			"type": "String",
+			"readOnly": true,
+			"description":"Status of the light source (received from the device)",
+			"default":"UNKNOWN"
+		},
+		
+		"AT+SignalChannel":{
+			"type":"String",
+			"readOnly":true,
+			"description":"Source status (received from the device)",
+			"default":"UNKNOWN"
+		},
+		"AT+deviceInfo":{
+			"type":"String",
+			"readOnly":true,
+			"description": "System informations (received from the device)",
+			"default":"UNKNOWN"
+		},
+		"AT+AspectRatio":{
+			"type":"String",
+			"readOnly":true,
+			"description": "Aspect ratio (received from the device)",
+			"default":"UNKNOWN"
+		},
+		"AT+InstallationMode":{
+			"type":"String",
+			"readOnly":true,
+			"description": "Installation mode (received from the device)",
+			"default":"UNKNOWN"
+		}
+	},
+	"commands": {
+		"Turn On": {
+			"menu":"Power",
+			"callback":"turnOn"
+		},
+		"Turn Off": {
+			"menu":"Power",
+			"callback":"turnOff"
+		},
+		"Laser On": {
+			"menu":"Power",
+			"callback":"laserOn"
+		},
+		"Laser Off": {
+			"menu":"Power",
+			"callback":"laserOff"
+		},
+		"Set Source": {
+			"menu":"",
+			"callback":"setSource",
+			"parameters": {
+				"Source": {
+					"type": "Enum",
+					"options":{
+						"HDMI 1":1,
+						"HDMI 2":2,
+						"VGA 1":3,
+						"VGA 2":4
+					}
+				}
+			}
+		},
+		"Set Ratio":{
+			"menu":"Configuration",
+			"callback":"setAspectRatio",
+			"parameters": {
+				"Ratio" : {
+					"type": "Enum",
+					"options": {
+						"Native":1,
+						"Fill":2,
+						"4:3":3,
+						"16:6":4,
+						"16:9":5,
+						"16:10":6
+					}
+				}
+			}
+		},
+		"Mute": {
+			"menu":"Volume",
+			"callback":"mute"
+		},
+		"Unmute": {
+			"menu":"Volume",
+			"callback":"unmute"
+		},
+		"Volume+":{
+			"menu":"Volume",
+			"callback":"volPlus"
+		},
+		"Volume-": {
+			"menu":"Volume",
+			"callback":"volReduce"
+		},
+		"Set Volume": {
+			"menu": "Volume",
+			"callback":"volSetting",
+			"parameters": {
+				"Volume": {
+					"type": "Integer",
+					"min":0,
+					"max":100,
+					"default":0,
+					"description": "Value of the volume"
+				}
+			}	
+		},
+		"Focus+": {
+			"menu": "Configuration",
+			"callback":"focusIncrease",
+			"parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}	
+		},
+		"Focus-": {
+			"menu": "Configuration",
+			"callback":"focusReduce",
+			"parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}
+		},
+		"Set Mode": {
+			"menu": "Configuration",
+			"callback":"setMode",
+			"parameters": {
+				"Mode": {
+					"type": "Enum",
+					"options":{
+						"Table Front":1,
+						"Table Rear":2,
+						"Ceiling Front":3,
+						"Ceiling Rear":4
+					}
+				}
+			}
+		},
+		"Shift Up": {
+			"menu":"Shift",
+			"callback":"shiftUp",
+			"parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}
+		},
+		"Shift Down": {
+			"menu":"Shift",
+			"callback":"shiftDown",
+			   "parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}
+		},
+		"Shift Left": {
+			"menu":"Shift",
+			"callback":"shiftLeft",
+			"parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}
+		},
+		"Shift Right": {
+			"menu":"Shift",
+			"callback": "shiftRight",
+			"parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}
+		},
+		"Device Status": {
+			"menu":"Querry",
+			"callback":"deviceStatus"
+		},
+		"Volume status": {
+			"menu" : "Querry",
+			"callback":"volStatus"
+		},
+		"Laser status": {
+			"menu" : "Querry",
+			"callback":"laserStatus"
+		},
+		"Source status": {
+			"menu": "Querry",
+			"callback":"sourceStatus"
+		},
+		"Device Information": {
+			"menu":"Querry",
+			"callback":"deviceInfo"
+		},
+		"Installation mode status": {
+			"menu":"Querry",
+			"callback":"installationModeStatus"
+		},
+		"Aspect ratio status": {
+			"menu":"Querry",
+			"callback":"ratioStatus"
+		},
+		"Increase Zoom": {
+			"menu":"Configuration",
+			"callback":"zoomIncrease",
+			"parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}
+		},
+		"Reduce Zoom": {
+			"menu": "Configuration",
+			"callback":"zoomReduce",
+			"parameters":{
+				"Offset": {
+					"type":"Integer",
+					"min":0,
+					"default":10,
+					"max":100,
+					"description":"Value of the offset for each trigger"
+				}
+			}
+		},
+		"Vertical center": {
+			"menu": "Configuration",
+			"callback":"verticalCenter"
+		},
+		"Horizontal center":{
+			"menu": "Configuration",
+			"callback":"horizontalCenter"
+		}
+
+	},
+
+	"scripts":
+	[
+		"appotronics.js"
+	]
+}
+
